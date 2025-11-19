@@ -31,6 +31,29 @@
       overflow-x: hidden;
     }
 
+    /* Intro overlay styles */
+    #intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #intro-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(64, 224, 208, 0.7);
+    }
+
     header {
       position: relative;
       height: 22vh;
@@ -229,12 +252,20 @@
         0 0 30px rgba(255, 255, 255, 0.7);
     }
 
-    .news-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 12px #40E0D0, 0 0 20px rgba(64, 224, 208, 0.6);
-      margin-top: 10px;
+    .news-item {
+      margin-bottom: 25px;
+      color: white;
+      line-height: 1.5;
+    }
+
+    .news-item h3 {
+      color: #40E0D0;
+      margin-bottom: 8px;
+    }
+
+    .news-item:not(:last-child) {
+      border-bottom: 1px solid #40E0D0;
+      padding-bottom: 25px;
     }
 
     .socials-list {
@@ -625,7 +656,6 @@
     }
 
     @media (max-width: 900px) {
-      /* 🔽 Cabecera ajustada al contenido */
       header {
         height: auto;
         padding: 15px 10px;
@@ -730,14 +760,15 @@
       #sonic_dj {
         font-size: 1.2rem;
       }
-
-      .news-image {
-        max-width: 90%;
-      }
     }
   </style>
 </head>
 <body>
+  <!-- Intro Overlay -->
+  <div id="intro-overlay">
+    <img src="KaraokeSecreto.jpg" alt="Intro Karaoke Secreto">
+  </div>
+
   <header>
     <h1 id="animated-title"></h1>
     <div id="subtitle">Donde la música te hace renacer</div>
@@ -767,7 +798,14 @@
 
     <div class="news-container">
       <h2>Noticias y Anuncios</h2>
-      <img src="img/KaraokeSecreto.jpg" alt="Karaoke Secreto" class="news-image">
+      <div class="news-item">
+        <h3>¡Secreto Musical ya esta al aire!</h3>
+        <p>Pasate por nuestra sala de chat para solicitar tus temas y compartir con la familia de Secreto Musical.</p>
+      </div>
+      <div class="news-item">
+        <h3>¿Quieres formar parte de nuestro staff?</h3>
+        <p>Pregunta a los moderadores de nuestra sala de chat para que formes parte de nuestro Staff.</p>
+      </div>
     </div>
 
     <div class="socials-container">
@@ -906,9 +944,21 @@
 
   <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js"></script>
   <script src="https://sistemahost.com/playergenerator/js/player.js"></script>
-  <script> 
-    // El reproductor anterior ha sido reemplazado, así que este script ya no se aplica.
-    // Puedes eliminarlo si ya no lo usas.
+
+  <script>
+    // Ocultar intro después de 6 segundos
+    document.addEventListener('DOMContentLoaded', function() {
+      const introOverlay = document.getElementById('intro-overlay');
+      if (introOverlay) {
+        setTimeout(() => {
+          introOverlay.style.opacity = '0';
+          introOverlay.style.transition = 'opacity 0.8s ease';
+          setTimeout(() => {
+            introOverlay.remove();
+          }, 800);
+        }, 6000); // 6000 ms = 6 segundos
+      }
+    });
   </script>
 
   <script>
