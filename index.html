@@ -229,20 +229,12 @@
         0 0 30px rgba(255, 255, 255, 0.7);
     }
 
-    .news-item {
-      margin-bottom: 25px;
-      color: white;
-      line-height: 1.5;
-    }
-
-    .news-item h3 {
-      color: #40E0D0;
-      margin-bottom: 8px;
-    }
-
-    .news-item:not(:last-child) {
-      border-bottom: 1px solid #40E0D0;
-      padding-bottom: 25px;
+    .news-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 12px #40E0D0, 0 0 20px rgba(64, 224, 208, 0.6);
+      margin-top: 10px;
     }
 
     .socials-list {
@@ -635,9 +627,9 @@
     @media (max-width: 900px) {
       /* 🔽 Cabecera ajustada al contenido */
       header {
-        height: auto; /* Elimina el alto fijo */
-        padding: 15px 10px; /* Espacio ajustado */
-        justify-content: center; /* Mantiene el centrado vertical */
+        height: auto;
+        padding: 15px 10px;
+        justify-content: center;
       }
 
       h1 {
@@ -661,7 +653,6 @@
         padding: 20px 10px;
       }
 
-      /* 🔽 Reproductor al 95% en móviles */
       .player-container {
         max-width: none;
         width: 100%;
@@ -739,6 +730,10 @@
       #sonic_dj {
         font-size: 1.2rem;
       }
+
+      .news-image {
+        max-width: 90%;
+      }
     }
   </style>
 </head>
@@ -772,14 +767,7 @@
 
     <div class="news-container">
       <h2>Noticias y Anuncios</h2>
-      <div class="news-item">
-        <h3>¡Secreto Musical ya esta al aire!</h3>
-        <p>Pasate por nuestra sala de chat para solicitar tus temas y compartir con la familia de Secreto Musical.</p>
-      </div>
-      <div class="news-item">
-        <h3>¿Quieres formar parte de nuestro staff?</h3>
-        <p>Pregunta a los moderadores de nuestra sala de chat para que formes parte de nuestro Staff.</p>
-      </div>
+      <img src="img/KaraokeSecreto.jpg" alt="Karaoke Secreto" class="news-image">
     </div>
 
     <div class="socials-container">
@@ -879,7 +867,6 @@
   <h2 class="carousel-title">Staff</h2>
   <div class="carousel-container">
     <div class="carousel-track">
-      <!-- Primera secuencia: 15 imágenes -->
       <div class="carousel-slide"><img src="img/staff1.jpg" alt="Staff 1"></div>
       <div class="carousel-slide"><img src="img/staff2.jpg" alt="Staff 2"></div>
       <div class="carousel-slide"><img src="img/staff3.jpg" alt="Staff 3"></div>
@@ -895,7 +882,6 @@
       <div class="carousel-slide"><img src="img/staff13.jpg" alt="Staff 13"></div>
       <div class="carousel-slide"><img src="img/staff14.jpg" alt="Staff 14"></div>
       <div class="carousel-slide"><img src="img/staff15.jpg" alt="Staff 15"></div>
-      <!-- Segunda secuencia: repetición completa para transición suave -->
       <div class="carousel-slide"><img src="img/staff1.jpg" alt="Staff 1"></div>
       <div class="carousel-slide"><img src="img/staff2.jpg" alt="Staff 2"></div>
       <div class="carousel-slide"><img src="img/staff3.jpg" alt="Staff 3"></div>
@@ -1059,3 +1045,4 @@
   </script>
 </body>
 </html>
+
