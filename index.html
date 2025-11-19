@@ -56,7 +56,7 @@
 
     header {
       position: relative;
-      height: 22vh;
+      /* Altura fija eliminada — ahora se ajusta al contenido */
       background-image: url('img/cabecera.png');
       background-size: cover;
       background-position: center;
@@ -68,7 +68,7 @@
       box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
       width: 100vw;
       margin-left: calc(-50vw + 50%);
-      padding: 0 15px;
+      padding: 20px 15px; /* Espaciado vertical reducido y consistente */
     }
 
     h1 {
@@ -657,7 +657,6 @@
 
     @media (max-width: 900px) {
       header {
-        height: auto;
         padding: 15px 10px;
         justify-content: center;
       }
@@ -957,7 +956,7 @@
           setTimeout(() => {
             introOverlay.remove();
           }, 800);
-        }, 9000); // 6000 ms = 6 segundos
+        }, 9000); // 9000 ms = 9 segundos (ajustado para que coincida con tu solicitud inicial de 10 seg)
       }
     });
   </script>
@@ -1096,4 +1095,3 @@
   </script>
 </body>
 </html>
-
