@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script id='sonic_js' data-port='8004' src='https://sonic.sistemahost.es/cp/widgets.js?r=106    '></script>
+  <script id='sonic_js' data-port='8004' src='https://sonic.sistemahost.es/cp/widgets.js?r=106      '></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Secreto Musical: radio en línea con programación diaria, DJ en vivo, chat. ¡Secreto Musical donde la música te hace renacer!">
   <title>Secreto Musical</title>
   <link rel="icon" type="image/x-icon" href="img/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand    :wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand      :wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -394,12 +394,6 @@
       border: none;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
-      /* Evitar que el iframe reciba foco al inicio */
-      pointer-events: none;
-    }
-
-    #chat-container.loaded iframe {
-      pointer-events: auto;
     }
 
     #programming-section {
@@ -761,7 +755,7 @@
   <main>
     <div class="player-container" id="music-player-container">
 <iframe
-  src="https://secretomusical.com/reproductor/    "
+  src="https://secretomusical.com/reproductor/      "
   width="100%"
   height="380"
   frameborder="0"
@@ -790,37 +784,37 @@
     <div class="socials-container">
       <h2>Redes Sociales</h2>
       <div class="socials-list">
-        <a href="https://wa.me/tu_numero_aqui    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://wa.me/tu_numero_aqui      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-whatsapp">
             <img src="img/red1.png" alt="Whatsapp">
             <span>Whatsapp</span>
           </div>
         </a>
-        <a href="https://t.me/SecretoMusical    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://t.me/SecretoMusical      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-telegram">
             <img src="img/red2.png" alt="Telegram">
             <span>Telegram</span>
           </div>
         </a>
-        <a href="https://teams.live.com/l/invite/FAA5llM-YgFwqbwjQE?v=g1    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://teams.live.com/l/invite/FAA5llM-YgFwqbwjQE?v=g1      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-teams">
             <img src="img/red3.png" alt="Microsoft Teams">
             <span>Teams</span>
           </div>
         </a>
-        <a href="https://www.tiktok.com/@secretomusical3?_r=1&_t=ZM-919QHJzOyoG    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.tiktok.com/@secretomusical3?_r=1&_t=ZM-919QHJzOyoG      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-tiktok">
             <img src="img/red4.png" alt="TikTok">
             <span>TikTok</span>
           </div>
         </a>
-        <a href="https://www.instagram.com/radiosecretomusical?igsh=ZnZoa2Y3ZXltamY=    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.instagram.com/radiosecretomusical?igsh=ZnZoa2Y3ZXltamY=      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-instagram">
             <img src="img/red5.png" alt="Instagram">
             <span>Instagram</span>
           </div>
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61583007170483    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.facebook.com/profile.php?id=61583007170483      " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-facebook">
             <img src="img/red6.png" alt="Facebook">
             <span>Facebook</span>
@@ -830,9 +824,9 @@
     </div>
   </main>
 
-  <div id="chat-container" tabindex="-1">
+  <div id="chat-container">
     <iframe 
-      src="https://chat.chatzona.org/index.html#nick=&channel=Secreto_Musical    " 
+      src="https://chat.chatzona.org/index.html#nick=&channel=Secreto_Musical      " 
       width="100%" 
       height="680" 
       frameborder="0"
@@ -899,8 +893,8 @@
     Copyright © 2025 | Secreto Musical
   </footer>
 
-  <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js    "></script>
-  <script src="https://sistemahost.com/playergenerator/js/player.js    "></script>
+  <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js      "></script>
+  <script src="https://sistemahost.com/playergenerator/js/player.js      "></script>
   <script> 
     // El reproductor anterior ha sido reemplazado, así que este script ya no se aplica.
     // Puedes eliminarlo si ya no lo usas.
@@ -931,25 +925,17 @@
           chatContainer.style.display = 'none';
           toggleBtn.textContent = 'Chat';
         } else {
-          // 🔥 Guardar scroll actual antes de mostrar el chat
-          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+          // Guardar la posición actual del scroll
+          const currentScrollY = window.scrollY;
 
           chatContainer.style.display = 'block';
           toggleBtn.textContent = 'Ocultar Chat';
 
-          // Desactivar interacción brevemente para evitar foco
-          const iframe = chatContainer.querySelector('iframe');
-          iframe.style.pointerEvents = 'none';
-
-          // Restaurar scroll si el navegador lo cambió (común en Android)
+          // Restaurar la posición del scroll inmediatamente después de mostrar el chat
+          // Esto evita que el navegador haga scroll automático al iframe
           setTimeout(() => {
-            window.scrollTo(0, currentScroll);
-            // Permitir interacción después de 800ms
-            setTimeout(() => {
-              iframe.style.pointerEvents = 'auto';
-              chatContainer.classList.add('loaded');
-            }, 500);
-          }, 100);
+            window.scrollTo(0, currentScrollY);
+          }, 10);
         }
         updateCloseButton();
       });
