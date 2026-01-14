@@ -909,7 +909,7 @@
       const closeOverlayBtn = document.getElementById('close-overlay-btn');
       const toolbar = document.getElementById('toolbar');
 
-      let originalChatStyles = {};
+      let isChatFixed = false;
 
       function updateCloseButton() {
         const chatVisible = chatContainer.style.display === 'block';
@@ -924,41 +924,41 @@
       toggleBtn.addEventListener('click', function() {
         const isVisible = chatContainer.style.display === 'block';
         if (isVisible) {
-          // Restaurar estilo original
-          chatContainer.style.position = originalChatStyles.position || '';
-          chatContainer.style.top = originalChatStyles.top || '';
-          chatContainer.style.left = originalChatStyles.left || '';
-          chatContainer.style.width = originalChatStyles.width || '';
-          chatContainer.style.margin = originalChatStyles.margin || '';
+          // Restaurar
+          chatContainer.style.position = '';
+          chatContainer.style.top = '';
+          chatContainer.style.left = '';
+          chatContainer.style.width = '';
+          chatContainer.style.margin = '20px auto';
           chatContainer.style.display = 'none';
+          isChatFixed = false;
           toggleBtn.textContent = 'Chat';
         } else {
-          // Guardar estilos originales
+          // Mostrar primero
+          chatContainer.style.display = 'block';
+          
+          // Forzar reflow
+          void chatContainer.offsetWidth;
+          
+          // Ahora calcular posición
           const rect = chatContainer.getBoundingClientRect();
-          originalChatStyles = {
-            position: chatContainer.style.position,
-            top: chatContainer.style.top,
-            left: chatContainer.style.left,
-            width: chatContainer.style.width,
-            margin: chatContainer.style.margin
-          };
-
-          // Convertir a fixed
+          const scrollTop = window.scrollY;
+          
+          // Aplicar fixed
           chatContainer.style.position = 'fixed';
-          chatContainer.style.top = rect.top + window.scrollY + 'px';
+          chatContainer.style.top = (rect.top + scrollTop) + 'px';
           chatContainer.style.left = rect.left + 'px';
           chatContainer.style.width = rect.width + 'px';
           chatContainer.style.margin = '0';
-          chatContainer.style.display = 'block';
+          isChatFixed = true;
+          
           toggleBtn.textContent = 'Ocultar Chat';
-
-          // Hacer scroll suave al contenedor (solo una vez)
-          setTimeout(() => {
-            window.scrollTo({
-              top: rect.top + window.scrollY,
-              behavior: 'smooth'
-            });
-          }, 100);
+          
+          // Scroll suave (opcional, ya está en pantalla)
+          window.scrollTo({
+            top: rect.top + scrollTop,
+            behavior: 'smooth'
+          });
         }
         updateCloseButton();
       });
@@ -980,13 +980,13 @@
         let wasClosed = false;
 
         if (chatContainer.style.display === 'block') {
-          // Restaurar
-          chatContainer.style.position = originalChatStyles.position || '';
-          chatContainer.style.top = originalChatStyles.top || '';
-          chatContainer.style.left = originalChatStyles.left || '';
-          chatContainer.style.width = originalChatStyles.width || '';
-          chatContainer.style.margin = originalChatStyles.margin || '';
+          chatContainer.style.position = '';
+          chatContainer.style.top = '';
+          chatContainer.style.left = '';
+          chatContainer.style.width = '';
+          chatContainer.style.margin = '20px auto';
           chatContainer.style.display = 'none';
+          isChatFixed = false;
           toggleBtn.textContent = 'Chat';
           wasClosed = true;
         }
