@@ -135,7 +135,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       padding: 30px 15px;
-      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
+      max-width: 1300px;
       margin: 0 auto;
       width: 100%;
     }
@@ -379,7 +379,7 @@
 
     #chat-container {
       width: 90%;
-      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
+      max-width: 1300px;
       margin: 20px auto;
       display: none;
       border: 3px solid #39FF14;
@@ -440,7 +440,7 @@
       border-radius: 12px;
       padding: 25px;
       width: 90%;
-      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
+      max-width: 1300px;
       margin: 0 auto 30px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -657,7 +657,7 @@
         flex-direction: column;
         grid-template-areas: none;
         padding: 20px 10px;
-        max-width: none; /* En móviles no aplica el ancho fijo */
+        max-width: none;
       }
 
       .player-container {
@@ -909,6 +909,8 @@
       const closeOverlayBtn = document.getElementById('close-overlay-btn');
       const toolbar = document.getElementById('toolbar');
 
+      let originalChatStyles = {};
+
       function updateCloseButton() {
         const chatVisible = chatContainer.style.display === 'block';
         const progVisible = progSection.style.display === 'block';
@@ -922,20 +924,41 @@
       toggleBtn.addEventListener('click', function() {
         const isVisible = chatContainer.style.display === 'block';
         if (isVisible) {
+          // Restaurar estilo original
+          chatContainer.style.position = originalChatStyles.position || '';
+          chatContainer.style.top = originalChatStyles.top || '';
+          chatContainer.style.left = originalChatStyles.left || '';
+          chatContainer.style.width = originalChatStyles.width || '';
+          chatContainer.style.margin = originalChatStyles.margin || '';
           chatContainer.style.display = 'none';
           toggleBtn.textContent = 'Chat';
         } else {
-          // Guardar la posición actual del scroll
-          const currentScrollY = window.scrollY;
+          // Guardar estilos originales
+          const rect = chatContainer.getBoundingClientRect();
+          originalChatStyles = {
+            position: chatContainer.style.position,
+            top: chatContainer.style.top,
+            left: chatContainer.style.left,
+            width: chatContainer.style.width,
+            margin: chatContainer.style.margin
+          };
 
+          // Convertir a fixed
+          chatContainer.style.position = 'fixed';
+          chatContainer.style.top = rect.top + window.scrollY + 'px';
+          chatContainer.style.left = rect.left + 'px';
+          chatContainer.style.width = rect.width + 'px';
+          chatContainer.style.margin = '0';
           chatContainer.style.display = 'block';
           toggleBtn.textContent = 'Ocultar Chat';
 
-          // Restaurar la posición del scroll inmediatamente después de mostrar el chat
-          // Esto evita que el navegador haga scroll automático al iframe
+          // Hacer scroll suave al contenedor (solo una vez)
           setTimeout(() => {
-            window.scrollTo(0, currentScrollY);
-          }, 10);
+            window.scrollTo({
+              top: rect.top + window.scrollY,
+              behavior: 'smooth'
+            });
+          }, 100);
         }
         updateCloseButton();
       });
@@ -957,6 +980,12 @@
         let wasClosed = false;
 
         if (chatContainer.style.display === 'block') {
+          // Restaurar
+          chatContainer.style.position = originalChatStyles.position || '';
+          chatContainer.style.top = originalChatStyles.top || '';
+          chatContainer.style.left = originalChatStyles.left || '';
+          chatContainer.style.width = originalChatStyles.width || '';
+          chatContainer.style.margin = originalChatStyles.margin || '';
           chatContainer.style.display = 'none';
           toggleBtn.textContent = 'Chat';
           wasClosed = true;
