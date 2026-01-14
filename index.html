@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script id='sonic_js' data-port='8004' src='https://sonic.sistemahost.es/cp/widgets.js?r=106'></script>
+  <script id='sonic_js' data-port='8004' src='https://sonic.sistemahost.es/cp/widgets.js?r=106    '></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Secreto Musical: radio en línea con programación diaria, DJ en vivo, chat. ¡Secreto Musical donde la música te hace renacer!">
   <title>Secreto Musical</title>
   <link rel="icon" type="image/x-icon" href="img/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand    :wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -31,32 +31,8 @@
       overflow-x: hidden;
     }
 
-    /* Intro overlay styles */
-    #intro-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.95);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-
-    #intro-overlay img {
-      max-width: 90vw;
-      max-height: 90vh;
-      width: auto;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(64, 224, 208, 0.7);
-    }
-
     header {
       position: relative;
-      /* Altura fija eliminada — ahora se ajusta al contenido */
       background-image: url('img/cabecera.png');
       background-size: cover;
       background-position: center;
@@ -68,7 +44,7 @@
       box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
       width: 100vw;
       margin-left: calc(-50vw + 50%);
-      padding: 20px 15px; /* Espaciado vertical reducido y consistente */
+      padding: 20px 15px;
     }
 
     h1 {
@@ -159,7 +135,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       padding: 30px 15px;
-      max-width: 1000px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 0 auto;
       width: 100%;
     }
@@ -214,8 +190,8 @@
     }
 
     #dj_profile img {
-      width: 70%;
-      height: 70%;
+      width: 50%;
+      height: 50%;
       max-width: 100%;
       border-radius: 8px;
       box-shadow: 0 0 12px #ffff00, 0 0 20px rgba(255, 255, 0, 0.6);
@@ -403,18 +379,20 @@
 
     #chat-container {
       width: 90%;
-      max-width: 1000px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 20px auto;
       display: none;
       border: 3px solid #39FF14;
       border-radius: 12px;
       box-shadow: 0 0 20px #39FF14, 0 0 30px rgba(57, 255, 20, 0.6);
       position: relative;
+      /* Añadido para mejorar el scroll en móviles */
+      scroll-margin-top: 10px;
     }
 
     #chat-container iframe {
       width: 100%;
-      height: 500px;
+      height: 680px;
       border: none;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
@@ -464,7 +442,7 @@
       border-radius: 12px;
       padding: 25px;
       width: 90%;
-      max-width: 1000px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 0 auto 30px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -657,6 +635,7 @@
 
     @media (max-width: 900px) {
       header {
+        height: auto;
         padding: 15px 10px;
         justify-content: center;
       }
@@ -680,6 +659,7 @@
         flex-direction: column;
         grid-template-areas: none;
         padding: 20px 10px;
+        max-width: none; /* En móviles no aplica el ancho fijo */
       }
 
       .player-container {
@@ -725,6 +705,7 @@
       .programming-container {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         padding: 20px;
+        max-width: none;
       }
 
       .day-item img {
@@ -763,11 +744,6 @@
   </style>
 </head>
 <body>
-  <!-- Intro Overlay -->
-  <div id="intro-overlay">
-    <img src="img/KaraokeSecreto.jpg" alt="Intro Karaoke Secreto">
-  </div>
-
   <header>
     <h1 id="animated-title"></h1>
     <div id="subtitle">Donde la música te hace renacer</div>
@@ -781,7 +757,7 @@
   <main>
     <div class="player-container" id="music-player-container">
 <iframe
-  src="https://secretomusical.com/reproductor/"
+  src="https://secretomusical.com/reproductor/    "
   width="100%"
   height="380"
   frameborder="0"
@@ -798,11 +774,10 @@
     <div class="news-container">
       <h2>Noticias y Anuncios</h2>
       <div class="news-item">
-        <h3>Karoke Navideño de Secreto Musical 12/12/2025</h3>
-        <p>Ve afinando tu voz y unete al karaoke de Secreto Musical este 12 de diciembre a las 8:00 pm hora Mexico.</p>
-        <p>Envianos tus audios a travez de nuestras redes sociales, Whatsapp, Teams o Telegram</p>
+        <h3>Instala Secreto Musical como App en tu telefono</h3>
+        <p>Ve a los 3 puntos que aparecen en tu navegador (arriba a la derecha). Busca "Añadir a pantalla de inicio" y pulsas en "instalar" </p>
       </div>
-      <div class="news-item">
+            <div class="news-item">
         <h3>¿Quieres formar parte de nuestro staff?</h3>
         <p>Pregunta a los moderadores de nuestra sala de chat para que formes parte de nuestro Staff.</p>
       </div>
@@ -811,37 +786,37 @@
     <div class="socials-container">
       <h2>Redes Sociales</h2>
       <div class="socials-list">
-        <a href="https://wa.me/tu_numero_aqui" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://wa.me/tu_numero_aqui    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-whatsapp">
             <img src="img/red1.png" alt="Whatsapp">
             <span>Whatsapp</span>
           </div>
         </a>
-        <a href="https://t.me/SecretoMusical" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://t.me/SecretoMusical    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-telegram">
             <img src="img/red2.png" alt="Telegram">
             <span>Telegram</span>
           </div>
         </a>
-        <a href="https://teams.live.com/l/invite/FAA5llM-YgFwqbwjQE?v=g1" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://teams.live.com/l/invite/FAA5llM-YgFwqbwjQE?v=g1    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-teams">
             <img src="img/red3.png" alt="Microsoft Teams">
             <span>Teams</span>
           </div>
         </a>
-        <a href="https://www.tiktok.com/@secretomusical3?_r=1&_t=ZM-919QHJzOyoG" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.tiktok.com/@secretomusical3?_r=1&_t=ZM-919QHJzOyoG    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-tiktok">
             <img src="img/red4.png" alt="TikTok">
             <span>TikTok</span>
           </div>
         </a>
-        <a href="https://www.instagram.com/radiosecretomusical?igsh=ZnZoa2Y3ZXltamY=" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.instagram.com/radiosecretomusical?igsh=ZnZoa2Y3ZXltamY=    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-instagram">
             <img src="img/red5.png" alt="Instagram">
             <span>Instagram</span>
           </div>
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61583007170483" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
+        <a href="https://www.facebook.com/profile.php?id=61583007170483    " target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
           <div class="social-item social-facebook">
             <img src="img/red6.png" alt="Facebook">
             <span>Facebook</span>
@@ -851,11 +826,11 @@
     </div>
   </main>
 
-  <div id="chat-container">
+  <div id="chat-container" tabindex="-1">
     <iframe 
-      src="https://chat.chatzona.org/index.html#nick=&channel=Secreto_Musical" 
+      src="https://chat.chatzona.org/index.html#nick=&channel=Secreto_Musical    " 
       width="100%" 
-      height="500" 
+      height="680" 
       frameborder="0"
       loading="lazy"
     ></iframe>
@@ -864,33 +839,9 @@
   <div id="programming-section">
     <h2 class="programming-title">Programación</h2>
     <div class="programming-container">
-      <div class="day-item" data-img="img/lunes.jpg">
-        <img src="img/lunes.jpg" alt="Lunes">
-        <span>Lunes</span>
-      </div>
-      <div class="day-item" data-img="img/martes.jpg">
-        <img src="img/martes.jpg" alt="Martes">
-        <span>Martes</span>
-      </div>
-      <div class="day-item" data-img="img/miercoles.jpg">
-        <img src="img/miercoles.jpg" alt="Miércoles">
-        <span>Miércoles</span>
-      </div>
-      <div class="day-item" data-img="img/jueves.jpg">
-        <img src="img/jueves.jpg" alt="Jueves">
-        <span>Jueves</span>
-      </div>
-      <div class="day-item" data-img="img/viernes.jpg">
-        <img src="img/viernes.jpg" alt="Viernes">
-        <span>Viernes</span>
-      </div>
-      <div class="day-item" data-img="img/sabado.jpg">
-        <img src="img/sabado.jpg" alt="Sábado">
-        <span>Sábado</span>
-      </div>
-      <div class="day-item" data-img="img/domingo.jpg">
-        <img src="img/domingo.jpg" alt="Domingo">
-        <span>Domingo</span>
+      <div class="day-item" data-img="img/programacion.jpg">
+        <img src="img/programacion.jpg" alt="Programación Semanal">
+        <span>Programación Semanal</span>
       </div>
     </div>
   </div>
@@ -905,6 +856,7 @@
   <h2 class="carousel-title">Staff</h2>
   <div class="carousel-container">
     <div class="carousel-track">
+      <!-- Primera secuencia: 15 imágenes -->
       <div class="carousel-slide"><img src="img/staff1.jpg" alt="Staff 1"></div>
       <div class="carousel-slide"><img src="img/staff2.jpg" alt="Staff 2"></div>
       <div class="carousel-slide"><img src="img/staff3.jpg" alt="Staff 3"></div>
@@ -920,6 +872,7 @@
       <div class="carousel-slide"><img src="img/staff13.jpg" alt="Staff 13"></div>
       <div class="carousel-slide"><img src="img/staff14.jpg" alt="Staff 14"></div>
       <div class="carousel-slide"><img src="img/staff15.jpg" alt="Staff 15"></div>
+      <!-- Segunda secuencia: repetición completa para transición suave -->
       <div class="carousel-slide"><img src="img/staff1.jpg" alt="Staff 1"></div>
       <div class="carousel-slide"><img src="img/staff2.jpg" alt="Staff 2"></div>
       <div class="carousel-slide"><img src="img/staff3.jpg" alt="Staff 3"></div>
@@ -942,23 +895,11 @@
     Copyright © 2025 | Secreto Musical
   </footer>
 
-  <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js"></script>
-  <script src="https://sistemahost.com/playergenerator/js/player.js"></script>
-
-  <script>
-    // Ocultar intro después de 6 segundos
-    document.addEventListener('DOMContentLoaded', function() {
-      const introOverlay = document.getElementById('intro-overlay');
-      if (introOverlay) {
-        setTimeout(() => {
-          introOverlay.style.opacity = '0';
-          introOverlay.style.transition = 'opacity 0.8s ease';
-          setTimeout(() => {
-            introOverlay.remove();
-          }, 800);
-        }, 9000); // 9000 ms = 9 segundos (ajustado para que coincida con tu solicitud inicial de 10 seg)
-      }
-    });
+  <script src="https://sistemahost.com/playergenerator/js/jquery-3.2.1.min.js    "></script>
+  <script src="https://sistemahost.com/playergenerator/js/player.js    "></script>
+  <script> 
+    // El reproductor anterior ha sido reemplazado, así que este script ya no se aplica.
+    // Puedes eliminarlo si ya no lo usas.
   </script>
 
   <script>
@@ -988,7 +929,11 @@
         } else {
           chatContainer.style.display = 'block';
           toggleBtn.textContent = 'Ocultar Chat';
-          chatContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // 🔥 Corrección clave: forzar scroll al contenedor del chat después de un breve retraso
+          setTimeout(() => {
+            chatContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300); // 300ms da tiempo al teclado a estabilizarse en móviles
         }
         updateCloseButton();
       });
