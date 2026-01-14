@@ -135,7 +135,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       padding: 30px 15px;
-      max-width: 1300px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 0 auto;
       width: 100%;
     }
@@ -379,14 +379,13 @@
 
     #chat-container {
       width: 90%;
-      max-width: 1300px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 20px auto;
       display: none;
       border: 3px solid #39FF14;
       border-radius: 12px;
       box-shadow: 0 0 20px #39FF14, 0 0 30px rgba(57, 255, 20, 0.6);
       position: relative;
-      scroll-margin-top: 10px;
     }
 
     #chat-container iframe {
@@ -395,6 +394,12 @@
       border: none;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
+      /* Evitar que el iframe reciba foco al inicio */
+      pointer-events: none;
+    }
+
+    #chat-container.loaded iframe {
+      pointer-events: auto;
     }
 
     #programming-section {
@@ -441,7 +446,7 @@
       border-radius: 12px;
       padding: 25px;
       width: 90%;
-      max-width: 1300px;
+      max-width: 1300px; /* ← Aumentado de 1000px a 1300px */
       margin: 0 auto 30px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -633,11 +638,111 @@
     }
 
     @media (max-width: 900px) {
-      /* ... tus estilos existentes ... */
+      header {
+        height: auto;
+        padding: 15px 10px;
+        justify-content: center;
+      }
 
-      #chat-container iframe {
-        height: 70vh !important; /* ← Cambio clave: altura adaptable en móviles */
-        min-height: 300px;
+      h1 {
+        font-size: 2.2rem;
+        white-space: normal;
+      }
+
+      #subtitle {
+        font-size: 1.0rem;
+        margin-top: 6px;
+        text-shadow: 
+          0 0 6px #40E0D0,
+          0 0 12px #40E0D0,
+          0 0 18px rgba(64, 224, 208, 0.6);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        grid-template-areas: none;
+        padding: 20px 10px;
+        max-width: none; /* En móviles no aplica el ancho fijo */
+      }
+
+      .player-container {
+        max-width: none;
+        width: 100%;
+        padding: 20px 0;
+        margin-bottom: 20px;
+      }
+
+      .player-container iframe {
+        width: 95% !important;
+        height: 380px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .portada-dj,
+      .news-container,
+      .socials-container {
+        max-width: 500px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      #dj_profile img {
+        width: 70%;
+      }
+
+      .carousel-title,
+      .programming-title {
+        font-size: 1.8rem;
+        margin: 25px auto 12px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+      }
+
+      .carousel-slide {
+        width: 200px;
+        height: 150px;
+        margin-right: 16px;
+      }
+
+      .programming-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        padding: 20px;
+        max-width: none;
+      }
+
+      .day-item img {
+        max-width: 100px;
+        height: 100px;
+      }
+
+      .socials-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .social-item img {
+        width: 50px;
+        height: 50px;
+      }
+
+      #close-overlay-btn,
+      .close-btn {
+        top: 15px;
+        right: 15px;
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+      }
+
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-3240px); }
+      }
+
+      #sonic_title,
+      #sonic_dj {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -826,18 +931,25 @@
           chatContainer.style.display = 'none';
           toggleBtn.textContent = 'Chat';
         } else {
+          // 🔥 Guardar scroll actual antes de mostrar el chat
+          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
           chatContainer.style.display = 'block';
           toggleBtn.textContent = 'Ocultar Chat';
 
-          // 🔥 Nueva estrategia: forzar scroll con mayor retraso + desenfoque
+          // Desactivar interacción brevemente para evitar foco
+          const iframe = chatContainer.querySelector('iframe');
+          iframe.style.pointerEvents = 'none';
+
+          // Restaurar scroll si el navegador lo cambió (común en Android)
           setTimeout(() => {
-            // Desenfocar cualquier campo activo (previene teclado)
-            if (document.activeElement) {
-              document.activeElement.blur();
-            }
-            // Ajustar scroll
-            chatContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 700); // 700ms da más margen en Android
+            window.scrollTo(0, currentScroll);
+            // Permitir interacción después de 800ms
+            setTimeout(() => {
+              iframe.style.pointerEvents = 'auto';
+              chatContainer.classList.add('loaded');
+            }, 500);
+          }, 100);
         }
         updateCloseButton();
       });
